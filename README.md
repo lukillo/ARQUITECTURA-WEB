@@ -2,7 +2,7 @@
 
 # Proyecto arquitectura web alumno LUCAS LLOPIS 
 
-Proyecto ABM videos para cursos online con nodejs express y mongodb
+Proyecto ABM repuestos mecanicos con nodejs express y mongodb
 
 ## Estructura del proyecto 🚀
 
