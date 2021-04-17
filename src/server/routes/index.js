@@ -3,13 +3,17 @@
  */
  const health = require('../controller/health');
  const notFound = require('../controller/not-found');
-//  const { processEvent } = require('../controller/notifications');
-//  const { confirmSubscrition } = require('../../lib/openPassSubscriptor');
+ const { addComponent,getComponent,updateComponent,deleteComponent } = require('../controller/mechanicalComponents');
+
  //Bind path with route.
  const bind = app => {
    
    app.get('/health', health);
-//    app.post('/events', confirmSubscrition, processEvent);
+   app.post('/mechanical-components', addComponent);
+   app.get('/mechanical-component/:id', getComponent);
+   app.patch('/mechanical-components/:id', updateComponent);
+   app.delete('/mechanical-components/:id', deleteComponent);
+
    app.get('*', notFound);
  
  }

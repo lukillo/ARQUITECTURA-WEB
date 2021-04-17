@@ -4,9 +4,9 @@
 
 Proyecto ABM videos para cursos online con nodejs express y mongodb
 
-## Comenzando 🚀
+## Estructura del proyecto 🚀
 
-
+![alt text](https://arquitectura-web.s3.amazonaws.com/Captura+de+Pantalla+2021-04-16+a+la(s)+20.52.10.png)
 
 ### Pre-requisitos 📋
 
@@ -20,9 +20,16 @@ node v14.15.4^
 npm install
 ```
 
-## Versionado 📌
+## Rutas 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles
+```
+POST   /mechanical-components
+GET    /mechanical-component/:id'
+PATCH  /mechanical-components/:id
+DELETE /mechanical-components/:id
+```
+
+
 
 ## Autores ✒️
 
