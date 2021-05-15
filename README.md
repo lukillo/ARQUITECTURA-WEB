@@ -29,6 +29,11 @@ PATCH  /mechanical-components/:id
 DELETE /mechanical-components/:id
 ```
 
+### Uso 📝
+
+```
+Dentro de la carpeta DOC abrir el index.html que contiene toda la documentacion de la api y de cada endpoint (se precisa de toda la carpeta para ver el archivo)
+```
 
 
 ## Autores ✒️
