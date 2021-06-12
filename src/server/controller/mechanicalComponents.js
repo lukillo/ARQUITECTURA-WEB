@@ -1,3 +1,7 @@
+const assert = require('assert');
+const createError = require('http-errors');
+const { create, read, update, deleteItem, readAll } = require('../../services/mechanicalComponents');
+
 /**
  * @api {post} /addComponent
  * @apiGroup  mechanical-components
@@ -20,9 +24,40 @@
  * @apiError 500 status Internal server error Erro no esperado
  * @apiError 502 status Bad Gateway Error conectadonse con otra api(mongo)
  */
- const addComponent = (req,res, next)=>{ 
+ const addComponent = async (req,res, next)=>{ 
     try {
-      res.status(200).json({"health":"OK"});
+      const {
+        id, 
+        category,
+        description, 
+        price, 
+        stock, 
+        brand, 
+        type, 
+        title,
+        pictures
+      } = req.body
+
+      assert(id, createError.BadRequest());
+      assert(category, createError.BadRequest());
+      assert(description, createError.BadRequest());
+      assert(price, createError.BadRequest());
+      assert(stock, createError.BadRequest());
+      assert(brand, createError.BadRequest());
+      assert(type, createError.BadRequest());
+      assert(title, createError.BadRequest());
+      assert(pictures, createError.BadRequest());
+
+      await create(id, 
+        category,
+        description, 
+        price, 
+        stock, 
+        brand, 
+        type, 
+        title,
+        pictures);
+      res.status(201).json({"Created":"OK"});
     } catch (error) {
       next(error);
     }
@@ -52,9 +87,15 @@
  * @apiError 500 status Internal server error Erro no esperado
  * @apiError 502 status Bad Gateway Error conectadonse con otra api(mongo)
  */
- const getComponent = (req,res, next)=>{ 
+ const getComponent = async (req,res, next)=>{ 
     try {
-      res.status(200).json({"health":"OK"});
+      const { id } = req.params;
+
+      assert(id, createError.BadRequest());
+
+      const item = await read(id);
+
+      res.status(200).json(item);
     } catch (error) {
       next(error);
     }
@@ -71,7 +112,7 @@
  *       "type":"string type"
  *  }
  * @apiSuccessExample {json} 200:OK
- * {
+ * [{
  *  "id": "uuid id de la autoparte",
  *  "category": "string categoria de la autoparte",  
  *  "description": "string descripcion",
@@ -81,7 +122,7 @@
  *  "type": "string auto camioneta camion", 
  *  "title": "string titulo del repuesto",
  *  "pictures": "[string] array de imagenes"
- * }
+ * }]
  *
  * @apiSuccess 200 status OK 
  * @apiError 400 status Bad Request algun campo en el payload
@@ -89,9 +130,10 @@
  * @apiError 500 status Internal server error Erro no esperado
  * @apiError 502 status Bad Gateway Error conectadonse con otra api(mongo)
  */
- const getAllComponents = (req,res, next)=>{ 
+ const getAllComponents = async (req,res, next)=>{ 
   try {
-    res.status(200).json({"health":"OK"});
+    const items = await readAll();
+    res.status(200).json(items);
   } catch (error) {
     next(error);
   }
@@ -129,9 +171,17 @@
  * @apiError 502 status Error al acceder a la base de dartos
  * @apiError 504 status Timeout
  */
- const updateComponent = (req,res, next)=>{ 
+ const updateComponent = async (req,res, next)=>{ 
     try {
-      res.status(200).json({"health":"OK"});
+      const {
+        id
+      } = req.params;
+
+      assert(id, createError.BadRequest());
+
+      await update(id, req.body);
+
+      res.status(200).json({});
     } catch (error) {
       next(error);
     }
@@ -151,9 +201,16 @@
  * @apiError 502 status Error al acceder a la base de dartos
  * @apiError 504 status Timeout
  */
- const deleteComponent = (req,res, next)=>{ 
+ const deleteComponent = async (req,res, next)=>{ 
     try {
-      res.status(200).json({"health":"OK"});
+      const {
+        id
+      } = req.params;
+
+      assert(id, createError.BadRequest());
+      await deleteItem(id);
+
+      res.status(200).json({"Result":"OK"});
     } catch (error) {
       next(error);
     }

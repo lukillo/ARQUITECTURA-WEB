@@ -11,10 +11,9 @@
    app.get('/health', health);
    app.post('/mechanical-components', addComponent);
    app.get('/mechanical-component/:id', getComponent);
-   app.get('/mechanical-component', getAllComponents);
+   app.get('/mechanical-components', getAllComponents);
    app.patch('/mechanical-components/:id', updateComponent);
    app.delete('/mechanical-components/:id', deleteComponent);
-
    app.get('*', notFound);
  
  }
