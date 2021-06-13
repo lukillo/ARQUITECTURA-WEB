@@ -1,4 +1,4 @@
-<img src="https://github.com/lukillo/ARQUITECTURA-WEB/blob/main/nodejs.png" width="150px" align="right" />
+<img src="https://facuimagenes.s3.amazonaws.com/nodejs.png" width="150px" align="right" />
 # ARQUITECTURA-WEB
 
 # Proyecto arquitectura web alumno LUCAS LLOPIS 
