@@ -1,3 +1,4 @@
+<img src="https://github.com/lukillo/ARQUITECTURA-WEB/main/nodejs.png?raw=true" width="150px" align="right" />
 # ARQUITECTURA-WEB
 
 # Proyecto arquitectura web alumno LUCAS LLOPIS 
@@ -23,8 +24,10 @@ npm install
 ## Rutas 📌
 
 ```
+GET    /health
 POST   /mechanical-components
-GET    /mechanical-component/:id'
+GET    /mechanical-component/:id
+GET    /mechanical-components
 PATCH  /mechanical-components/:id
 DELETE /mechanical-components/:id
 ```

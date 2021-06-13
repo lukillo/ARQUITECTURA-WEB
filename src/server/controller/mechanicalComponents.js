@@ -64,7 +64,7 @@ const { create, read, update, deleteItem, readAll } = require('../../services/me
   }
 
 /**
- * @api {get} /getComponent
+ * @api {get} /getComponent/:id
  * @apiGroup  mechanical-components
  * @apiVersion 1.0.0
  * @apiParam {Number} id Component unique ID.
@@ -102,15 +102,9 @@ const { create, read, update, deleteItem, readAll } = require('../../services/me
   }
 
 /**
- * @api {post} /getAllComponents
+ * @api {get} /getAllComponents
  * @apiGroup  mechanical-components
  * @apiVersion 1.0.0
- * @apiParamExample {json} 200:Success
- * {
- *       "category":"category string",
- *       "brand":"brand string",
- *       "type":"string type"
- *  }
  * @apiSuccessExample {json} 200:OK
  * [{
  *  "id": "uuid id de la autoparte",
@@ -141,11 +135,11 @@ const { create, read, update, deleteItem, readAll } = require('../../services/me
 
   /**
 /**
- * @api {patch} /updateComponent
+ * @api {patch} /updateComponent/:id
  * @apiGroup  mechanical-components 
  * @apiVersion 1.0.0
- * @apiSuccess  {json} 201:Created {}
- * @apiParam  {String} id uuid id de la autoparte,
+ * @apiParam {Number} id Component unique ID.
+ * @apiSuccess  {json} 200: {}
  * @apiParam  {String} category string categoria de la autoparte
  * @apiParam  {String} description string descripcion
  * @apiParam  {Float} price float precio
@@ -156,7 +150,6 @@ const { create, read, update, deleteItem, readAll } = require('../../services/me
  * @apiParam  {String} pictures [string] array de imagenes
  * @apiParamExample {json} Request-Example:
  * {
- * id
  * category
  * description
  * price
@@ -188,7 +181,7 @@ const { create, read, update, deleteItem, readAll } = require('../../services/me
   }
 
 /**
- * @api {delete} /deleteComponent
+ * @api {delete} /deleteComponent/:id
  * @apiGroup  mechanical-components
  * @apiVersion 1.0.0
  * @apiParam {Number} id Component unique ID.
